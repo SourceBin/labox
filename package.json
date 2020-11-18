@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "node src/index.js"
+  },
+  "dependencies": {
+    "ajv": "^6.12.6",
+    "ejs": "^3.1.5",
+    "fs-extra": "^9.0.1",
+    "toml": "^3.0.0"
+  }
+}

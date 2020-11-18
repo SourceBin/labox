@@ -1,0 +1,19 @@
+name = "C++"
+entrypoint = "main.cpp"
+
+[install]
+packages = [
+    "g++"
+]
+
+[[execute]]
+compile = [
+    "g++",
+    "-o",
+    "main",
+    "main.cpp"
+]
+
+run = [
+    "./main"
+]

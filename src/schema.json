@@ -1,0 +1,79 @@
+{
+    "type": "object",
+    "required": ["name", "entrypoint", "execute"],
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+
+        "entrypoint": {
+            "type": "string"
+        },
+
+        "install": {
+            "type": "object",
+            "properties": {
+                "packages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minItems": 1
+                    }
+                },
+
+                "setup": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minItems": 1
+                    }
+                }
+            }
+        },
+
+        "execute": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "required": ["run"],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+
+                    "compile": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "minItems": 1
+                        }
+                    },
+
+                    "run": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "minItems": 1
+                        }
+                    }
+                }
+            }
+        },
+
+        "format": {
+            "type": "object",
+            "required": ["command"],
+            "properties": {
+                "command": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minItems": 1
+                    }
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

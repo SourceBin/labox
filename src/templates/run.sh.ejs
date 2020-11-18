@@ -1,0 +1,21 @@
+#!/bin/bash
+
+language=$1
+
+case "$language" in
+<% for (const language of languages) { -%>
+<% for (const execute of language.execute) { -%>
+  "<%- execute.name || language.name %>")
+    cat - > <%= language.entrypoint %>
+<% if (execute.compile) { -%>
+    <%- execute.compile.join(' ') %>
+<% } -%>
+    <%- execute.run.join(' ') %>
+    ;;
+<% } -%>
+<% } -%>
+  *)
+    echo "Unknown language: $language"
+    exit 1
+    ;;
+esac
