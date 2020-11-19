@@ -1,0 +1,16 @@
+#!/bin/bash
+
+language=$1
+
+case "$language" in
+<% for (const formatter of formatters) { -%>
+  "<%- formatter.name %>")
+    cat - > <%- formatter.entrypoint %>
+    <%- formatter.command.join(' ') %>
+    ;;
+<% } -%>
+  *)
+    echo "Unknown language: $language"
+    exit 1
+    ;;
+esac

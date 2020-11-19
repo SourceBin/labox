@@ -3,16 +3,14 @@
 language=$1
 
 case "$language" in
-<% for (const language of languages) { -%>
-<% for (const execute of language.execute) { -%>
-  "<%- execute.name || language.name %>")
-    cat - > <%= language.entrypoint %>
-<% if (execute.compile) { -%>
-    <%- execute.compile.join(' ') %>
+<% for (const executor of executors) { -%>
+  "<%- executor.name %>")
+    cat - > <%- executor.entrypoint %>
+<% if (executor.compile) { -%>
+    <%- executor.compile.join(' ') %>
 <% } -%>
-    <%- execute.run.join(' ') %>
+    <%- executor.run.join(' ') %>
     ;;
-<% } -%>
 <% } -%>
   *)
     echo "Unknown language: $language"

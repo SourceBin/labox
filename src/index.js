@@ -24,15 +24,19 @@ const languageConfigs = fs
   .map(([name, file]) => [name.replace(/\.toml$/, ''), toml.parse(file)])
   .reduce((map, [name, cfg]) => map.set(name, cfg), new Map());
 
-const handledLanguages = [];
+const handledLanguages = new Set();
+
 const packages = [];
 const setup = [];
+const executors = [];
+const formatters = [];
 
 function handleLanguage(name, cfg) {
-  if (handledLanguages.includes(cfg)) {
+  if (handledLanguages.has(cfg)) {
     return;
+  } else {
+    handledLanguages.add(cfg);
   }
-  handledLanguages.push(cfg);
 
   const valid = validateSchema(cfg);
   if (!valid) {
@@ -62,6 +66,23 @@ function handleLanguage(name, cfg) {
       }
     }
   }
+
+  for (const executor of cfg.execute) {
+    executors.push({
+      name: executor.name || cfg.name,
+      entrypoint: cfg.entrypoint,
+      compile: executor.compile,
+      run: executor.run,
+    });
+  }
+
+  if (cfg.format) {
+    formatters.push({
+      name: cfg.name,
+      entrypoint: cfg.entrypoint,
+      command: cfg.format.command,
+    });
+  }
 }
 
 [...languageConfigs.entries()]
@@ -69,9 +90,10 @@ function handleLanguage(name, cfg) {
   .forEach(([name, cfg]) => handleLanguage(name, cfg));
 
 const ctx = {
-  languages: handledLanguages,
   packages,
   setup,
+  executors,
+  formatters,
 };
 
 fs.readdirSync(TEMPLATE_DIR)
