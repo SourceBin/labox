@@ -3,17 +3,17 @@ entrypoint = "main.cpp"
 
 [install]
 packages = [
-    "g++"
+  "g++"
 ]
 
 [[execute]]
 compile = [
-    "g++",
-    "-o",
-    "main",
-    "main.cpp"
+  "g++",
+  "-o",
+  "main",
+  "main.cpp"
 ]
 
 run = [
-    "./main"
+  "./main"
 ]

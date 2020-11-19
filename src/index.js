@@ -27,7 +27,7 @@ function handleLanguage(file) {
 
   const valid = validateSchema(language);
   if (!valid) {
-    console.error(`Error: ${name} schema invalid`);
+    console.error(`Error: ${file} schema invalid`);
 
     validateSchema.errors.forEach((error) =>
       console.error(`-> ${error.dataPath} ${error.message}`)

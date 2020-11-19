@@ -3,26 +3,26 @@ entrypoint = "index.ts"
 
 [install]
 packages = [
-    "npm"
+  "npm"
 ]
 
 setup = [
-    "npm i -g prettier@2.1.2 typescript@4.0.5"
+  "npm i -g prettier@2.1.2 typescript@4.0.5"
 ]
 
 [[execute]]
 compile = [
-    "tsc",
-    "index.ts"
+  "tsc",
+  "index.ts"
 ]
 
 run = [
-    "node",
-    "index.js"
+  "node",
+  "index.js"
 ]
 
 [format]
 command = [
-    "prettier",
-    "index.ts"
+  "prettier",
+  "index.ts"
 ]

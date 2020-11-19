@@ -3,21 +3,21 @@ entrypoint = "index.js"
 
 [install]
 packages = [
-    "npm"
+  "npm"
 ]
 
 setup = [
-    "npm i -g prettier@2.1.2"
+  "npm i -g prettier@2.1.2"
 ]
 
 [[execute]]
 run = [
-    "node",
-    "index.js"
+  "node",
+  "index.js"
 ]
 
 [format]
 command = [
-    "prettier",
-    "index.js"
+  "prettier",
+  "index.js"
 ]
