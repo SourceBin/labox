@@ -1,0 +1,23 @@
+name = "Haskell"
+entrypoint = "main.hs"
+
+[install]
+depends = [
+  "c"
+]
+
+packages = [
+  "ghc"
+]
+
+[[execute]]
+compile = [
+  "ghc",
+  "-o",
+  "main",
+  "main.hs"
+]
+
+run = [
+  "./main"
+]

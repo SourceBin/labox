@@ -1,0 +1,13 @@
+name = "SCSS"
+entrypoint = "style.scss"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "style.scss"
+]

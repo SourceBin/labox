@@ -1,0 +1,13 @@
+name = "JSON"
+entrypoint = "index.json"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "index.json"
+]

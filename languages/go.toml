@@ -1,0 +1,26 @@
+name = "Go"
+entrypoint = "main.go"
+
+[install]
+packages = [
+  "go"
+]
+
+[[execute]]
+compile = [
+  "go",
+  "build",
+  "-o",
+  "main",
+  "main.go"
+]
+
+run = [
+  "./main"
+]
+
+[format]
+command = [
+  "gofmt",
+  "main.go"
+]

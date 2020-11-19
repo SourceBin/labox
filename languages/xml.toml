@@ -1,0 +1,17 @@
+name = "XML"
+entrypoint = "index.xml"
+
+[install]
+depends = [
+  "javascript"
+]
+
+setup = [
+  "npm i -g @prettier/plugin-xml@0.12.0"
+]
+
+[format]
+command = [
+  "prettier",
+  "index.xml"
+]

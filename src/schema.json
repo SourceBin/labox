@@ -1,6 +1,13 @@
 {
   "type": "object",
-  "required": ["name", "entrypoint", "execute"],
+  "required": ["name", "entrypoint"],
+  "anyOf": [{
+      "required": ["execute"]
+    },
+    {
+      "required": ["format"]
+    }
+  ],
   "properties": {
     "name": {
       "type": "string"

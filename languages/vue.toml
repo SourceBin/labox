@@ -1,0 +1,13 @@
+name = "Vue"
+entrypoint = "index.vue"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "index.vue"
+]

@@ -1,0 +1,17 @@
+name = "TOML"
+entrypoint = "index.toml"
+
+[install]
+depends = [
+  "javascript"
+]
+
+setup = [
+  "npm i -g prettier-plugin-toml@0.3.1"
+]
+
+[format]
+command = [
+  "prettier",
+  "index.toml"
+]

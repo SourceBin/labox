@@ -8,6 +8,7 @@ case "$language" in
     cat - > <%- formatter.entrypoint %>
     <%- formatter.command.join(' ') %>
     ;;
+
 <% } -%>
   *)
     echo "Unknown language: $language"

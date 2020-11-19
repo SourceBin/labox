@@ -1,0 +1,13 @@
+name = "Less"
+entrypoint = "style.less"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "style.css"
+]

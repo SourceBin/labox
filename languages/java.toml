@@ -1,0 +1,27 @@
+name = "Java"
+entrypoint = "Main.java"
+
+[install]
+depends = [
+  "javascript"
+]
+
+packages = [
+  "openjdk11"
+]
+
+setup = [
+  "npm i -g prettier-plugin-java@0.8.3"
+]
+
+[[execute]]
+run = [
+  "java",
+  "Main.java"
+]
+
+[format]
+command = [
+  "prettier",
+  "Main.java"
+]

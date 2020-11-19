@@ -1,0 +1,13 @@
+name = "HTML"
+entrypoint = "index.html"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "index.html"
+]

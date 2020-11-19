@@ -1,0 +1,19 @@
+name = "Rust"
+entrypoint = "main.rs"
+
+[install]
+packages = [
+  "rust"
+]
+
+[[execute]]
+compile = [
+  "rustc",
+  "-o",
+  "main",
+  "main.rs"
+]
+
+run = [
+  "./main"
+]

@@ -4,7 +4,7 @@ language=$1
 executor=$2
 
 case "$language" in
-<% for (const language of languages) { -%>
+<% for (const language of languages.filter(l => l.execute)) { -%>
   "<%- language.name %>")
     cat - > <%- language.entrypoint %>
 

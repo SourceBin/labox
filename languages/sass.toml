@@ -1,0 +1,13 @@
+name = "Sass"
+entrypoint = "style.sass"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "style.sass"
+]

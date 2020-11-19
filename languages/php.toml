@@ -1,0 +1,27 @@
+name = "PHP"
+entrypoint = "main.php"
+
+[install]
+depends = [
+  "javascript"
+]
+
+packages = [
+  "php"
+]
+
+setup = [
+  "npm i -g @prettier/plugin-php@0.16.0"
+]
+
+[[execute]]
+run = [
+  "php",
+  "main.php"
+]
+
+[format]
+command = [
+  "prettier",
+  "main.php"
+]

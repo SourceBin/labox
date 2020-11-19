@@ -1,0 +1,13 @@
+name = "YAML"
+entrypoint = "index.yml"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "index.yml"
+]

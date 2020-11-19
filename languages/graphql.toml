@@ -1,0 +1,13 @@
+name = "GraphQL"
+entrypoint = "index.graphql"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "index.graphql"
+]

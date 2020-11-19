@@ -1,0 +1,28 @@
+name = "Ruby"
+entrypoint = "main.rb"
+
+[install]
+depends = [
+  "javascript"
+]
+
+packages = [
+  "ruby",
+  "ruby-json"
+]
+
+setup = [
+  "npm i -g @prettier/plugin-ruby@0.20.1"
+]
+
+[[execute]]
+run = [
+  "ruby",
+  "main.rb"
+]
+
+[format]
+command = [
+  "prettier",
+  "main.rb"
+]

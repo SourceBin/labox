@@ -1,0 +1,13 @@
+name = "Markdown"
+entrypoint = "text.md"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "text.md"
+]

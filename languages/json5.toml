@@ -1,0 +1,13 @@
+name = "JSON5"
+entrypoint = "index.json5"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "index.json5"
+]

@@ -1,0 +1,13 @@
+name = "CSS"
+entrypoint = "style.css"
+
+[install]
+depends = [
+  "javascript"
+]
+
+[format]
+command = [
+  "prettier",
+  "style.css"
+]
