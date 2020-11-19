@@ -3,7 +3,6 @@ const ejs = require('ejs');
 const path = require('path');
 const toml = require('toml');
 const fs = require('fs-extra');
-const { info } = require('console');
 
 const BASE_DIR = path.join(__dirname, '..');
 const DIST_DIR = path.join(BASE_DIR, 'dist');
@@ -66,7 +65,7 @@ function handleLanguage(name, cfg) {
 }
 
 [...languageConfigs.entries()]
-  // .filter(([name]) => name === 'typescript')
+  .filter(([name]) => !process.argv[2] || name === process.argv[2])
   .forEach(([name, cfg]) => handleLanguage(name, cfg));
 
 const ctx = {
