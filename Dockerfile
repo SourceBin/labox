@@ -16,11 +16,14 @@ RUN npm run build $LANGUAGE
 #########
 # Image #
 #########
-FROM nestybox/alpine-docker
+FROM alpine:3
 
 WORKDIR /home/labox
 
-COPY --from=builder /home/labox/dist .
+COPY --from=builder /home/labox/dist/install.sh .
 RUN sh install.sh
 
-RUN find . -type f ! -name 'run.sh' -delete
+COPY --from=builder /home/labox/dist .
+RUN sh finish.sh
+
+USER labox
