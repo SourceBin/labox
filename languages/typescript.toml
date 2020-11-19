@@ -11,6 +11,8 @@ setup = [
 ]
 
 [[execute]]
+name = "Node.js"
+
 compile = [
   "tsc",
   "index.ts"

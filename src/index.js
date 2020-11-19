@@ -24,18 +24,16 @@ const languageConfigs = fs
   .map(([name, file]) => [name.replace(/\.toml$/, ''), toml.parse(file)])
   .reduce((map, [name, cfg]) => map.set(name, cfg), new Map());
 
-const handledLanguages = new Set();
-
+const languages = [];
 const packages = [];
 const setup = [];
-const executors = [];
 const formatters = [];
 
 function handleLanguage(name, cfg) {
-  if (handledLanguages.has(cfg)) {
+  if (languages.includes(cfg)) {
     return;
   } else {
-    handledLanguages.add(cfg);
+    languages.push(cfg);
   }
 
   const valid = validateSchema(cfg);
@@ -67,15 +65,6 @@ function handleLanguage(name, cfg) {
     }
   }
 
-  for (const executor of cfg.execute) {
-    executors.push({
-      name: executor.name || cfg.name,
-      entrypoint: cfg.entrypoint,
-      compile: executor.compile,
-      run: executor.run,
-    });
-  }
-
   if (cfg.format) {
     formatters.push({
       name: cfg.name,
@@ -90,9 +79,9 @@ function handleLanguage(name, cfg) {
   .forEach(([name, cfg]) => handleLanguage(name, cfg));
 
 const ctx = {
+  languages,
   packages,
   setup,
-  executors,
   formatters,
 };
 

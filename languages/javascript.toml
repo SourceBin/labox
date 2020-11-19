@@ -11,6 +11,8 @@ setup = [
 ]
 
 [[execute]]
+name = "Node.js"
+
 run = [
   "node",
   "index.js"

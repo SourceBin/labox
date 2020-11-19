@@ -1,16 +1,31 @@
 #!/bin/bash
 
 language=$1
+executor=$2
 
 case "$language" in
-<% for (const executor of executors) { -%>
-  "<%- executor.name %>")
-    cat - > <%- executor.entrypoint %>
+<% for (const language of languages) { -%>
+  "<%- language.name %>")
+    cat - > <%- language.entrypoint %>
+
+    case "$executor" in
+<% for (const executor of language.execute) { -%>
+      <%- language.execute.length > 1 ? `"${executor.name}"` : '*' %>)
 <% if (executor.compile) { -%>
-    <%- executor.compile.join(' ') %>
+        <%- executor.compile.join(' ') %>
 <% } -%>
-    <%- executor.run.join(' ') %>
+        <%- executor.run.join(' ') %>
+        ;;
+<% } -%>
+<% if (language.execute.length > 1) { -%>
+      *)
+        echo "Unknown executor: $executor"
+        exit 1
+        ;;
+<% } -%>
+    esac
     ;;
+
 <% } -%>
   *)
     echo "Unknown language: $language"
