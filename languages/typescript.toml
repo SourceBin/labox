@@ -2,12 +2,12 @@ name = "TypeScript"
 entrypoint = "index.ts"
 
 [install]
-packages = [
-  "npm"
+depends = [
+  "javascript"
 ]
 
 setup = [
-  "npm i -g prettier@2.1.2 typescript@4.0.5"
+  "npm i -g typescript@4.0.5"
 ]
 
 [[execute]]

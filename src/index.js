@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const path = require('path');
 const toml = require('toml');
 const fs = require('fs-extra');
+const { info } = require('console');
 
 const BASE_DIR = path.join(__dirname, '..');
 const DIST_DIR = path.join(BASE_DIR, 'dist');
@@ -17,17 +18,26 @@ if (fs.existsSync(DIST_DIR)) {
   fs.mkdirSync(DIST_DIR);
 }
 
-const languages = [];
-const packages = new Set();
-const setup = new Set();
+const languageConfigs = fs
+  .readdirSync(LANG_DIR)
+  .filter((name) => name.endsWith('.toml'))
+  .map((name) => [name, fs.readFileSync(path.join(LANG_DIR, name))])
+  .map(([name, file]) => [name.replace(/\.toml$/, ''), toml.parse(file)])
+  .reduce((map, [name, cfg]) => map.set(name, cfg), new Map());
 
-function handleLanguage(file) {
-  const language = toml.parse(fs.readFileSync(path.join(LANG_DIR, file)));
-  languages.push(language);
+const handledLanguages = [];
+const packages = [];
+const setup = [];
 
-  const valid = validateSchema(language);
+function handleLanguage(name, cfg) {
+  if (handledLanguages.includes(cfg)) {
+    return;
+  }
+  handledLanguages.push(cfg);
+
+  const valid = validateSchema(cfg);
   if (!valid) {
-    console.error(`Error: ${file} schema invalid`);
+    console.error(`Error: ${name} schema invalid`);
 
     validateSchema.errors.forEach((error) =>
       console.error(`-> ${error.dataPath} ${error.message}`)
@@ -36,23 +46,31 @@ function handleLanguage(file) {
     process.exit(1);
   }
 
-  if (language.install) {
-    for (const package of language.install.packages || []) {
-      packages.add(package);
+  if (cfg.install) {
+    for (const dep of cfg.install.depends || []) {
+      handleLanguage(dep, languageConfigs.get(dep));
     }
 
-    for (const cmd of language.install.setup || []) {
-      setup.add(cmd);
+    for (const pkg of cfg.install.packages || []) {
+      if (!packages.includes(pkg)) {
+        packages.push(pkg);
+      }
+    }
+
+    for (const cmd of cfg.install.setup || []) {
+      if (!setup.includes(cmd)) {
+        setup.push(cmd);
+      }
     }
   }
 }
 
-fs.readdirSync(LANG_DIR)
-  .filter((name) => name.endsWith('.toml'))
-  .forEach(handleLanguage);
+[...languageConfigs.entries()]
+  // .filter(([name]) => name === 'typescript')
+  .forEach(([name, cfg]) => handleLanguage(name, cfg));
 
 const ctx = {
-  languages,
+  languages: handledLanguages,
   packages,
   setup,
 };
