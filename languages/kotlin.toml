@@ -1,0 +1,30 @@
+name = "Kotlin"
+entrypoint = "main.kt"
+
+[install]
+depends = [
+  "java"
+]
+
+setup = [
+  "wget https://github.com/JetBrains/kotlin/releases/download/v1.4.20/kotlin-compiler-1.4.20.zip -O /tmp/kt.zip",
+  "unzip /tmp/kt.zip -d /opt",
+  "rm /tmp/kt.zip",
+  "rm /opt/kotlinc/bin/*.bat",
+  "ln -s /opt/kotlinc/bin/kotlin* /usr/bin"
+]
+
+[[execute]]
+compile = [
+  "kotlinc",
+  "-include-runtime",
+  "-d",
+  "main.jar",
+  "main.kt"
+]
+
+run = [
+  "java",
+  "-jar",
+  "main.jar"
+]

@@ -1,0 +1,13 @@
+name = "Clojure"
+entrypoint = "main.clj"
+
+[install]
+packages = [
+  "clojure"
+]
+
+[[execute]]
+run = [
+  "clojure",
+  "main.clj"
+]

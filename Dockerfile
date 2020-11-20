@@ -20,8 +20,14 @@ FROM alpine:3
 
 WORKDIR /home/labox
 
-COPY --from=builder /home/labox/dist/install.sh .
-RUN sh install.sh
+COPY --from=builder /home/labox/dist/global.sh .
+RUN sh global.sh
+
+COPY --from=builder /home/labox/dist/packages.sh .
+RUN sh packages.sh
+
+COPY --from=builder /home/labox/dist/setup.sh .
+RUN sh setup.sh
 
 COPY --from=builder /home/labox/dist .
 RUN sh finish.sh

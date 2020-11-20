@@ -3,6 +3,8 @@
 addgroup -g 1000 labox
 adduser -u 1000 -G labox -s /bin/sh -D labox
 
+chown labox:labox -R /home/labox
+
 find . -type f \
   ! -name 'run.sh' \
   ! -name 'format.sh' \

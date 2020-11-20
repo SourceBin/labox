@@ -1,0 +1,11 @@
+#!/bin/bash
+
+<% for (const language of languages) { -%>
+<% if (language.install && language.install.setup) { -%>
+echo "Setup <%- language.name %>"
+<% for (const cmd of language.install.setup) { -%>
+<%- cmd %>
+<% } -%>
+
+<% } -%>
+<% } -%>

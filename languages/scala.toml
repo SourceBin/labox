@@ -1,0 +1,21 @@
+name = "Scala"
+entrypoint = "Main.scala"
+
+[install]
+depends = [
+  "java"
+]
+
+setup = [
+  "wget https://downloads.lightbend.com/scala/2.13.4/scala-2.13.4.tgz",
+  "tar -xf scala-2.13.4.tgz",
+  "cp -R scala-2.13.4/bin/* /usr/local/bin",
+  "cp -R scala-2.13.4/lib/* /usr/local/lib",
+  "rm -rf scala-2.13.4"
+]
+
+[[execute]]
+run = [
+  "scala",
+  "Main.scala"
+]

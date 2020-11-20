@@ -11,9 +11,9 @@ image-%:
 .PHONY: run
 run: image
 	# run image with all languages
-	docker run --rm -it labox
+	docker run --rm -it --name labox labox
 
 .PHONY: run-%
 run-%: image-%
 	# run image with a single language
-	docker run --rm -it labox-$(*)
+	docker run --rm -it --name labox labox-$(*)

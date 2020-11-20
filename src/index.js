@@ -26,14 +26,14 @@ const languageConfigs = fs
 
 const languages = [];
 const packages = [];
-const setup = [];
-const formatters = [];
+const basePackages = fs
+  .readFileSync(path.join(BASE_DIR, 'packages.txt'), 'utf-8')
+  .split(/\r?\n/)
+  .filter((x) => !/^#|^\s*$/.test(x));
 
 function handleLanguage(name, cfg) {
   if (languages.includes(cfg)) {
     return;
-  } else {
-    languages.push(cfg);
   }
 
   const valid = validateSchema(cfg);
@@ -57,21 +57,9 @@ function handleLanguage(name, cfg) {
         packages.push(pkg);
       }
     }
-
-    for (const cmd of cfg.install.setup || []) {
-      if (!setup.includes(cmd)) {
-        setup.push(cmd);
-      }
-    }
   }
 
-  if (cfg.format) {
-    formatters.push({
-      name: cfg.name,
-      entrypoint: cfg.entrypoint,
-      command: cfg.format.command,
-    });
-  }
+  languages.push(cfg);
 }
 
 [...languageConfigs.entries()]
@@ -81,8 +69,7 @@ function handleLanguage(name, cfg) {
 const ctx = {
   languages,
   packages,
-  setup,
-  formatters,
+  basePackages,
 };
 
 fs.readdirSync(TEMPLATE_DIR)

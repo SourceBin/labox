@@ -3,7 +3,7 @@ entrypoint = "main.c"
 
 [install]
 packages = [
-  "g++"
+  "gcc"
 ]
 
 [[execute]]

@@ -3,12 +3,14 @@
 language=$1
 
 case "$language" in
-<% for (const formatter of formatters) { -%>
-  "<%- formatter.name %>")
-    cat - > <%- formatter.entrypoint %>
-    <%- formatter.command.join(' ') %>
+<% for (const language of languages) { -%>
+<% if (language.format) { -%>
+  "<%- language.name %>")
+    cat - > <%- language.entrypoint %>
+    <%- language.format.command.join(' ') %>
     ;;
 
+<% } -%>
 <% } -%>
   *)
     echo "Unknown language: $language"

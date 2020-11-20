@@ -1,0 +1,8 @@
+name = "Shell"
+entrypoint = "main.sh"
+
+[[execute]]
+run = [
+  "sh",
+  "main.sh"
+]

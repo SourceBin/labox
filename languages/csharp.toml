@@ -1,0 +1,18 @@
+name = "C#"
+entrypoint = "main.cs"
+
+[install]
+packages = [
+  "mono"
+]
+
+[[execute]]
+compile = [
+  "mcs",
+  "main.cs"
+]
+
+run = [
+  "mono",
+  "main.exe"
+]
