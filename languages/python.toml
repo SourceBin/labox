@@ -2,9 +2,18 @@ name = "Python"
 entrypoint = "main.py"
 
 [install]
+depends = [
+  "c"
+]
+
 packages = [
-  "python3",
-  "python2"
+  "python3-dev",
+  "python2-dev",
+  "py3-pip"
+]
+
+setup = [
+  "pip install black"
 ]
 
 [[execute]]
@@ -14,3 +23,6 @@ run = "python3 main.py"
 [[execute]]
 name = "Python 2"
 run = "python2 main.py"
+
+[format]
+command = "black -q - < main.py"

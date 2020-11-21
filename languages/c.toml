@@ -3,7 +3,8 @@ entrypoint = "main.c"
 
 [install]
 packages = [
-  "gcc"
+  "gcc",
+  "musl-dev"
 ]
 
 [[execute]]
