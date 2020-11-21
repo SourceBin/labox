@@ -7,20 +7,8 @@ packages = [
 ]
 
 [[execute]]
-compile = [
-  "go",
-  "build",
-  "-o",
-  "main",
-  "main.go"
-]
-
-run = [
-  "./main"
-]
+compile = "go build -o main main.go"
+run = "./main"
 
 [format]
-command = [
-  "gofmt",
-  "main.go"
-]
+command = "gofmt main.go"

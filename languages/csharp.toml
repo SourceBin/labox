@@ -7,12 +7,5 @@ packages = [
 ]
 
 [[execute]]
-compile = [
-  "mcs",
-  "main.cs"
-]
-
-run = [
-  "mono",
-  "main.exe"
-]
+compile = "mcs main.cs"
+run = "mono main.exe"

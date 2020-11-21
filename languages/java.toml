@@ -15,13 +15,7 @@ setup = [
 ]
 
 [[execute]]
-run = [
-  "java",
-  "Main.java"
-]
+run = "java Main.java"
 
 [format]
-command = [
-  "prettier",
-  "Main.java"
-]
+command = "prettier Main.java"

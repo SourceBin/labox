@@ -12,14 +12,7 @@ setup = [
 
 [[execute]]
 name = "Node.js"
-
-run = [
-  "node",
-  "index.js"
-]
+run = "node index.js"
 
 [format]
-command = [
-  "prettier",
-  "index.js"
-]
+command = "prettier index.js"

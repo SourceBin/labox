@@ -15,16 +15,5 @@ setup = [
 ]
 
 [[execute]]
-compile = [
-  "kotlinc",
-  "-include-runtime",
-  "-d",
-  "main.jar",
-  "main.kt"
-]
-
-run = [
-  "java",
-  "-jar",
-  "main.jar"
-]
+compile = "kotlinc -include-runtime -d main.jar main.kt"
+run = "java -jar main.jar"

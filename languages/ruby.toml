@@ -16,13 +16,7 @@ setup = [
 ]
 
 [[execute]]
-run = [
-  "ruby",
-  "main.rb"
-]
+run = "ruby main.rb"
 
 [format]
-command = [
-  "prettier",
-  "main.rb"
-]
+command = "prettier main.rb"

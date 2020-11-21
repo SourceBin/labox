@@ -7,7 +7,4 @@ depends = [
 ]
 
 [format]
-command = [
-  "prettier",
-  "index.graphql"
-]
+command = "prettier index.graphql"

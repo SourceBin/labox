@@ -7,7 +7,4 @@ depends = [
 ]
 
 [format]
-command = [
-  "prettier",
-  "text.md"
-]
+command = "prettier text.md"

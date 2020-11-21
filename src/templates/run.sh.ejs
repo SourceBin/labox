@@ -12,9 +12,9 @@ case "$language" in
 <% for (const executor of language.execute) { -%>
       <%- language.execute.length > 1 ? `"${executor.name}"` : '*' %>)
 <% if (executor.compile) { -%>
-        <%- executor.compile.join(' ') %>
+        <%- executor.compile %>
 <% } -%>
-        <%- executor.run.join(' ') %>
+        <%- executor.run %>
         ;;
 <% } -%>
 <% if (language.execute.length > 1) { -%>

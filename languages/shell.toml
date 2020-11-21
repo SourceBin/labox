@@ -2,7 +2,4 @@ name = "Shell"
 entrypoint = "main.sh"
 
 [[execute]]
-run = [
-  "sh",
-  "main.sh"
-]
+run = "sh main.sh"

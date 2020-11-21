@@ -7,13 +7,5 @@ packages = [
 ]
 
 [[execute]]
-compile = [
-  "rustc",
-  "-o",
-  "main",
-  "main.rs"
-]
-
-run = [
-  "./main"
-]
+compile = "rustc -o main main.rs"
+run = "./main"

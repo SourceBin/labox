@@ -7,7 +7,4 @@ depends = [
 ]
 
 [format]
-command = [
-  "prettier",
-  "index.json"
-]
+command = "prettier index.json"

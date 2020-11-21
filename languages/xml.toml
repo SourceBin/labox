@@ -11,7 +11,4 @@ setup = [
 ]
 
 [format]
-command = [
-  "prettier",
-  "index.xml"
-]
+command = "prettier index.xml"

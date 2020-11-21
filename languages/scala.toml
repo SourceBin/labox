@@ -15,7 +15,4 @@ setup = [
 ]
 
 [[execute]]
-run = [
-  "scala",
-  "Main.scala"
-]
+run = "scala Main.scala"

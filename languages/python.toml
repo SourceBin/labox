@@ -9,16 +9,8 @@ packages = [
 
 [[execute]]
 name = "Python 3"
-
-run = [
-  "python3",
-  "main.py"
-]
+run = "python3 main.py"
 
 [[execute]]
 name = "Python 2"
-
-run = [
-  "python2",
-  "main.py"
-]
+run = "python2 main.py"

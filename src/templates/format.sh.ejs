@@ -7,7 +7,7 @@ case "$language" in
 <% if (language.format) { -%>
   "<%- language.name %>")
     cat - > <%- language.entrypoint %>
-    <%- language.format.command.join(' ') %>
+    <%- language.format.command %>
     ;;
 
 <% } -%>

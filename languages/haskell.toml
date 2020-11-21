@@ -11,13 +11,5 @@ packages = [
 ]
 
 [[execute]]
-compile = [
-  "ghc",
-  "-o",
-  "main",
-  "main.hs"
-]
-
-run = [
-  "./main"
-]
+compile = "ghc -o main main.hs"
+run = "./main"

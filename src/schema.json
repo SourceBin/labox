@@ -59,19 +59,11 @@
           },
 
           "compile": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "string"
-            }
+            "type": "string"
           },
 
           "run": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -92,11 +84,7 @@
       "required": ["command"],
       "properties": {
         "command": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
+          "type": "string"
         }
       },
       "additionalProperties": false

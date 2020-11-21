@@ -12,19 +12,8 @@ setup = [
 
 [[execute]]
 name = "Node.js"
-
-compile = [
-  "tsc",
-  "index.ts"
-]
-
-run = [
-  "node",
-  "index.js"
-]
+compile = "tsc index.ts"
+run = "node index.js"
 
 [format]
-command = [
-  "prettier",
-  "index.ts"
-]
+command = "prettier index.ts"

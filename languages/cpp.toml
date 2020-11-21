@@ -7,13 +7,5 @@ packages = [
 ]
 
 [[execute]]
-compile = [
-  "g++",
-  "-o",
-  "main",
-  "main.cpp"
-]
-
-run = [
-  "./main"
-]
+compile = "g++ -o main main.cpp"
+run = "./main"

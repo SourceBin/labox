@@ -15,13 +15,7 @@ setup = [
 ]
 
 [[execute]]
-run = [
-  "php",
-  "main.php"
-]
+run = "php main.php"
 
 [format]
-command = [
-  "prettier",
-  "main.php"
-]
+command = "prettier main.php"
