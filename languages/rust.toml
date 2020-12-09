@@ -9,3 +9,11 @@ packages = [
 [[execute]]
 compile = "rustc -o main main.rs"
 run = "./main"
+
+[[execute.test]]
+code = """
+fn main() {
+  println!("hello");
+}
+"""
+output = "hello\n"

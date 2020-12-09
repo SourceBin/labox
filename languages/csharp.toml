@@ -9,3 +9,15 @@ packages = [
 [[execute]]
 compile = "mcs main.cs"
 run = "mono main.exe"
+
+[[execute.test]]
+code = """
+using System;
+
+class MainClass {
+  static void Main(string[] args) {
+    System.Console.WriteLine("hello");
+  }
+}
+"""
+output = "hello\n"

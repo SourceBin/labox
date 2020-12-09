@@ -10,5 +10,17 @@ packages = [
 compile = "go build -o main main.go"
 run = "./main"
 
+[[execute.test]]
+code = """
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("hello")
+}
+"""
+output = "hello\n"
+
 [format]
 command = "gofmt main.go"

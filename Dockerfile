@@ -18,18 +18,18 @@ RUN npm run build $LANGUAGE
 #########
 FROM alpine:3
 
-WORKDIR /home/labox
+WORKDIR /usr/bin
 
 COPY --from=builder /home/labox/dist/global.sh .
 RUN sh global.sh
 
 COPY --from=builder /home/labox/dist/packages.sh .
-RUN sh packages.sh
+RUN bash packages.sh
 
 COPY --from=builder /home/labox/dist/setup.sh .
-RUN sh setup.sh
+RUN bash setup.sh
 
 COPY --from=builder /home/labox/dist .
-RUN sh finish.sh
 
+WORKDIR /home/labox
 USER labox

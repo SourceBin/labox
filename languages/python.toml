@@ -20,9 +20,21 @@ setup = [
 name = "Python 3"
 run = "python3 main.py"
 
+[[execute.test]]
+code = """
+print('hello')
+"""
+output = "hello\n"
+
 [[execute]]
 name = "Python 2"
 run = "python2 main.py"
+
+[[execute.test]]
+code = """
+print 'hello'
+"""
+output = "hello\n"
 
 [format]
 command = "black -q - < main.py"

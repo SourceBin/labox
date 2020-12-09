@@ -17,3 +17,11 @@ setup = [
 [[execute]]
 compile = "kotlinc -include-runtime -d main.jar main.kt"
 run = "java -jar main.jar"
+
+[[execute.test]]
+code = """
+fun main() {
+  println("hello")
+}
+"""
+output = "hello\n"

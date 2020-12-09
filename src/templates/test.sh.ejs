@@ -1,0 +1,22 @@
+#!/bin/bash
+
+exit_code=0
+
+<% for (const language of languages.filter(l => l.execute)) { -%>
+echo "Test <%- language.name %>"
+<% for (const execute of language.execute) { -%>
+<% for (const test of execute.test) { -%>
+<% const name = `${language.name}${execute.name ? ` - ${execute.name}` : ''}${test.name ? ` - ${test.name}` : ''}`; -%>
+echo "<%- btoa(test.code) %>" \
+  | base64 -d \
+  | bash run.sh "<%- language.name %>" "<%- execute.name %>" \
+  | diff -u --label "<%- language.name %>" <(echo "<%- btoa(test.output) %>" | base64 -d) - \
+  && echo "✓ <%- name %>" \
+  || { echo "✗ <%- name %>"; exit_code=1; }
+<% } -%>
+<% } -%>
+echo ""
+
+<% } -%>
+
+exit $exit_code

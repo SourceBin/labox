@@ -13,3 +13,9 @@ packages = [
 [[execute]]
 compile = "ghc -o main main.hs"
 run = "./main"
+
+[[execute.test]]
+code = """
+main = putStrLn "hello"
+"""
+output = "hello\n"

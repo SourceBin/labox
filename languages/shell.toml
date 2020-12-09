@@ -3,3 +3,9 @@ entrypoint = "main.sh"
 
 [[execute]]
 run = "sh main.sh"
+
+[[execute.test]]
+code = """
+echo "hello"
+"""
+output = "hello\n"

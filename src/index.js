@@ -17,6 +17,8 @@ if (fs.existsSync(DIST_DIR)) {
   fs.mkdirSync(DIST_DIR);
 }
 
+const btoa = (b) => Buffer.from(b).toString('base64');
+
 const languageConfigs = fs
   .readdirSync(LANG_DIR)
   .filter((name) => name.endsWith('.toml'))
@@ -67,6 +69,7 @@ function handleLanguage(name, cfg) {
   .forEach(([name, cfg]) => handleLanguage(name, cfg));
 
 const ctx = {
+  btoa,
   languages,
   packages,
   basePackages,

@@ -17,5 +17,11 @@ setup = [
 [[execute]]
 run = "php main.php"
 
+[[execute.test]]
+code = """
+<?php echo "hello";
+"""
+output = "hello"
+
 [format]
 command = "prettier main.php"

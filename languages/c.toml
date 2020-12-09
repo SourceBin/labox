@@ -10,3 +10,14 @@ packages = [
 [[execute]]
 compile = "gcc -o main main.c"
 run = "./main"
+
+[[execute.test]]
+code = """
+#include <stdio.h>
+
+int main() {
+  printf("hello");
+  return 0;
+}
+"""
+output = "hello"

@@ -16,3 +16,13 @@ setup = [
 
 [[execute]]
 run = "scala Main.scala"
+
+[[execute.test]]
+code = """
+object Main {
+  def main(args: Array[String]) = {
+    println("hello")
+  }
+}
+"""
+output = "hello\n"

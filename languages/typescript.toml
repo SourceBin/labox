@@ -15,5 +15,11 @@ name = "Node.js"
 compile = "tsc index.ts"
 run = "node index.js"
 
+[[execute.test]]
+code = """
+console.log('hello');
+"""
+output = "hello\n"
+
 [format]
 command = "prettier index.ts"

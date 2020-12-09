@@ -9,3 +9,14 @@ packages = [
 [[execute]]
 compile = "g++ -o main main.cpp"
 run = "./main"
+
+[[execute.test]]
+code = """
+#include <iostream>
+
+int main() {
+  std::cout << "hello";
+  return 0;
+}
+"""
+output = "hello"

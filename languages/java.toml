@@ -17,5 +17,15 @@ setup = [
 [[execute]]
 run = "java Main.java"
 
+[[execute.test]]
+code = """
+class Main {
+  public static void main(String[] args) {
+    System.out.println("hello");
+  }
+}
+"""
+output = "hello\n"
+
 [format]
 command = "prettier Main.java"

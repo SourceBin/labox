@@ -8,3 +8,9 @@ packages = [
 
 [[execute]]
 run = "clojure main.clj"
+
+[[execute.test]]
+code = """
+(println "hello")
+"""
+output = "hello\n"
