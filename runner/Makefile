@@ -1,31 +1,31 @@
-RUN=docker run --rm -it --name labox
+RUN=docker run --rm -it --name runner
 
 .PHONY: image
 image:
 	# build image with all languages
-	docker build -t labox .
+	docker build -t runner .
 
 .PHONY: image-%
 image-%:
 	# build image with a single language
-	docker build -t labox-$(*) --build-arg LANGUAGE=$(*) .
+	docker build -t runner-$(*) --build-arg LANGUAGE=$(*) .
 
 .PHONY: run
 run: image
 	# run image with all languages
-	$(RUN) labox
+	$(RUN) runner
 
 .PHONY: run-%
 run-%: image-%
 	# run image with a single language
-	$(RUN) labox-$(*)
+	$(RUN) runner-$(*)
 
 .PHONY: test
 test: image
 	# test image with all languages
-	$(RUN) labox bash test.sh
+	$(RUN) runner bash test.sh
 
 .PHONY: test-%
 test-%: image-%
 	# test image with a single language
-	$(RUN) labox-$(*) bash test.sh
+	$(RUN) runner-$(*) bash test.sh

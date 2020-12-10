@@ -3,7 +3,7 @@
 ###########
 FROM node:alpine AS builder
 
-WORKDIR /home/labox
+WORKDIR /home/runner
 
 ARG LANGUAGE
 
@@ -20,16 +20,16 @@ FROM alpine:3
 
 WORKDIR /usr/bin
 
-COPY --from=builder /home/labox/dist/global.sh .
+COPY --from=builder /home/runner/dist/global.sh .
 RUN sh global.sh
 
-COPY --from=builder /home/labox/dist/packages.sh .
+COPY --from=builder /home/runner/dist/packages.sh .
 RUN bash packages.sh
 
-COPY --from=builder /home/labox/dist/setup.sh .
+COPY --from=builder /home/runner/dist/setup.sh .
 RUN bash setup.sh
 
-COPY --from=builder /home/labox/dist .
+COPY --from=builder /home/runner/dist .
 
-WORKDIR /home/labox
-USER labox
+WORKDIR /home/runner
+USER runner
