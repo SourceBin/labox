@@ -2,6 +2,17 @@ name = "Shell"
 entrypoint = "main.sh"
 
 [[execute]]
+name = "Bash"
+run = "bash main.sh"
+
+[[execute.test]]
+code = """
+echo "hello"
+"""
+output = "hello\n"
+
+[[execute]]
+name = "Shell"
 run = "sh main.sh"
 
 [[execute.test]]
