@@ -5,7 +5,7 @@ const child_process = require('child_process');
 const spawn = child_process.spawn;
 const exec = promisify(child_process.exec);
 
-const IMAGE_NAME = 'runner';
+const IMAGE_NAME = process.argv[2] ? `runner-${process.argv[2]}` : 'runner';
 const TIMEOUT = 15 * 1000;
 
 module.exports.exec = function (
